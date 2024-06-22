@@ -9,6 +9,8 @@ namespace CacheSim {
         public static void Main() {
             Configuration config = GetConfigutation();
             List<Address> lstAddresses = GetAdresses();
+
+            new MemoryTest(config, lstAddresses);
         }
 
         static Configuration GetConfigutation() {
@@ -36,7 +38,7 @@ namespace CacheSim {
         }
     
         static List<Address> GetAdresses() {
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "Addresses.txt");
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "Oficial.cache");
             List<string> lstLines = File.ReadAllLines(path).Where(p => p.Trim() != string.Empty).ToList();
 
             List<Address> lst = new();

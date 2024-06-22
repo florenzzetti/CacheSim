@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34616.47
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CacheSim", "CacheSim\CacheSim.csproj", "{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A429ED8E-4250-41E5-8062-C9A58E54BAAC}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7D198F49-3453-494C-9F49-4421026A8E79}
+	EndGlobalSection
+EndGlobal

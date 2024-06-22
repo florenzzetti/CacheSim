@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CacheSim")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b263b5f096bedfdef44854c6d2bdcf4fb6d21e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("CacheSim")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CacheSim")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -12,3 +12,4 @@ C:\src\Projects\CacheSim\CacheSim\obj\Debug\net8.0\refint\CacheSim.dll
 C:\src\Projects\CacheSim\CacheSim\obj\Debug\net8.0\CacheSim.pdb
 C:\src\Projects\CacheSim\CacheSim\obj\Debug\net8.0\CacheSim.genruntimeconfig.cache
 C:\src\Projects\CacheSim\CacheSim\obj\Debug\net8.0\ref\CacheSim.dll
+C:\src\Projects\CacheSim\CacheSim\obj\Debug\net8.0\CacheSim.sourcelink.json
