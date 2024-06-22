@@ -1,26 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\src\\Projects\\CacheSim\\",
+  "WorkspaceRootPath": "C:\\src\\Projects\\CacheSim\\CacheSim\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|c:\\src\\projects\\cachesim\\cachesim\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|solutionrelative:cachesim\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|c:\\src\\projects\\cachesim\\cachesim\\output.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|solutionrelative:cachesim\\output.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|c:\\src\\projects\\cachesim\\cachesim\\memory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|c:\\src\\projects\\cachesim\\cachesim\\cachesim\\memory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|solutionrelative:cachesim\\memory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|c:\\src\\projects\\cachesim\\cachesim\\configuration.ini||{3B902123-F8A7-4915-9F01-361F908088D0}",
-      "RelativeMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|solutionrelative:cachesim\\configuration.ini||{3B902123-F8A7-4915-9F01-361F908088D0}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\bin\\Debug\\net8.0\\Config.ini||{3B902123-F8A7-4915-9F01-361F908088D0}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:CacheSim\\bin\\Debug\\net8.0\\Config.ini||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|c:\\src\\projects\\cachesim\\cachesim\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|c:\\src\\projects\\cachesim\\cachesim\\cachesim\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|solutionrelative:cachesim\\configuration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|c:\\src\\projects\\cachesim\\cachesim\\cachesim\\output.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|solutionrelative:cachesim\\output.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|c:\\src\\projects\\cachesim\\cachesim\\cachesim\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2937CD69-2EE1-4A37-8571-E6AB7CE7D684}|CacheSim\\CacheSim.csproj|solutionrelative:cachesim\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,70 +30,68 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Configuration.cs",
-              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\Configuration.cs",
-              "RelativeDocumentMoniker": "CacheSim\\Configuration.cs",
-              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\Configuration.cs",
-              "RelativeToolTip": "CacheSim\\Configuration.cs",
-              "ViewState": "AQIAAA4AAAAAAAAAAAAswAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T23:02:29.807Z"
+              "DocumentIndex": 1,
+              "Title": "Config.ini",
+              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\bin\\Debug\\net8.0\\Config.ini",
+              "RelativeDocumentMoniker": "CacheSim\\bin\\Debug\\net8.0\\Config.ini",
+              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\bin\\Debug\\net8.0\\Config.ini",
+              "RelativeToolTip": "CacheSim\\bin\\Debug\\net8.0\\Config.ini",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002768|",
+              "WhenOpened": "2024-06-22T21:01:03.602Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Memory.cs",
-              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\Memory.cs",
+              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\Memory.cs",
               "RelativeDocumentMoniker": "CacheSim\\Memory.cs",
-              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\Memory.cs",
+              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\Memory.cs",
               "RelativeToolTip": "CacheSim\\Memory.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAAxwC4AAAAEAAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAQwEUAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-14T23:01:56.511Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "configuration.ini",
-              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\configuration.ini",
-              "RelativeDocumentMoniker": "CacheSim\\configuration.ini",
-              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\configuration.ini",
-              "RelativeToolTip": "CacheSim\\configuration.ini",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.002768|",
-              "WhenOpened": "2024-05-30T14:33:28.667Z"
+              "DocumentIndex": 2,
+              "Title": "Configuration.cs",
+              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\Configuration.cs",
+              "RelativeDocumentMoniker": "CacheSim\\Configuration.cs",
+              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\Configuration.cs",
+              "RelativeToolTip": "CacheSim\\Configuration.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAuwAsAAAAgAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T23:02:29.807Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "Output.cs",
-              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\Output.cs",
+              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\Output.cs",
               "RelativeDocumentMoniker": "CacheSim\\Output.cs",
-              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\Output.cs",
+              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\Output.cs",
               "RelativeToolTip": "CacheSim\\Output.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAVAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:16:36.226Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-30T14:16:36.226Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\Program.cs",
+              "DocumentMoniker": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\Program.cs",
               "RelativeDocumentMoniker": "CacheSim\\Program.cs",
-              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\Program.cs",
+              "ToolTip": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\Program.cs",
               "RelativeToolTip": "CacheSim\\Program.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-30T14:08:51.505Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-30T14:08:51.505Z"
             }
           ]
         }

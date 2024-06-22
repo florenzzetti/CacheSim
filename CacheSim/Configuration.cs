@@ -6,13 +6,17 @@ using System.Threading.Tasks;
 
 namespace CacheSim {
     public class Configuration {
-        public WritePolicy WritePolicy { get; set; }
-        public int RowSize { get; set; }
-        public int RowNumber { get; set; }
+        /// <summary>
+        /// Em bytes
+        /// </summary>
         public int Associativity { get; set; }
+        public int TamanhoBloco { get; set; }
+        public int QuantidadeBloco { get; set; }
+        public int BlocosPorConjunto { get; set; }
+        public WritePolicy WritePolicy { get; set; }
         public ReplacementPolicy ReplacementPolicy { get; set; }
-        public int HitTimespan { get; set; }
 
+        public int HitTimespan { get; set; }
         /// <summary>
         /// MemoriaPrincipal
         public int MPReadTimespan { get; set; }

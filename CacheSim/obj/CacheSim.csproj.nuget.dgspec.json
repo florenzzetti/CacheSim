@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim.csproj": {}
+    "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\CacheSim.csproj": {}
   },
   "projects": {
-    "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim.csproj": {
+    "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\CacheSim.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim.csproj",
+        "projectUniqueName": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\CacheSim.csproj",
         "projectName": "CacheSim",
-        "projectPath": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim.csproj",
+        "projectPath": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\CacheSim.csproj",
         "packagesPath": "C:\\Users\\caitl\\.nuget\\packages\\",
-        "outputPath": "C:\\src\\Projects\\CacheSim\\CacheSim\\obj\\",
+        "outputPath": "C:\\src\\Projects\\CacheSim\\CacheSim\\CacheSim\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\caitl\\AppData\\Roaming\\NuGet\\NuGet.Config",
