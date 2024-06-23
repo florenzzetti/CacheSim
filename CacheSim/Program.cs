@@ -10,7 +10,9 @@ namespace CacheSim {
             Configuration config = GetConfigutation();
             List<Address> lstAddresses = GetAdresses();
 
-            new MemoryTest(config, lstAddresses);
+            Tests.Run(lstAddresses);
+
+            //new MemoryTest(config, lstAddresses);
         }
 
         static Configuration GetConfigutation() {

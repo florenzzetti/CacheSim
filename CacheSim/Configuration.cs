@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CacheSim {
     public class Configuration {
-        /// <summary>
-        /// Em bytes
-        /// </summary>
-        public int Associativity { get; set; }
         public int TamanhoBloco { get; set; }
         public int QuantidadeBloco { get; set; }
+
+        /// <summary>
+        /// Associatividade
+        /// </summary>
         public int BlocosPorConjunto { get; set; }
         public WritePolicy WritePolicy { get; set; }
         public ReplacementPolicy ReplacementPolicy { get; set; }
