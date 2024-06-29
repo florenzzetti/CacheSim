@@ -11,10 +11,10 @@ namespace CacheSim
         public static int DefaultMPTimespan = 60;
 
         public static void Run(List<Address> lstAddresses) {
-            //Impacto_Tamnho_Cache
-            foreach (int Test in new int[16, 32, 64, 128, 256]) {
-                Impacto_Tamnho_Cache.QuantidadeBloco = Test;
-                Result result = new MemoryTest(Impacto_Tamnho_Cache, lstAddresses).Result;
+            //Impacto_Tamanho_Cache
+            foreach (int Test in new int[] { 16, 32, 64, 128, 256, 512 }) {
+                Impacto_Tamanho_Cache.QuantidadeBloco = Test;
+                Result result = new MemoryTest(Impacto_Tamanho_Cache, lstAddresses).Result;
                 result.Log();
             }
 
@@ -66,7 +66,7 @@ namespace CacheSim
                 //result.Log();
         }
 
-        public static Configuration Impacto_Tamnho_Cache =
+        public static Configuration Impacto_Tamanho_Cache =
         new Configuration
         {
             TamanhoBloco = 128,

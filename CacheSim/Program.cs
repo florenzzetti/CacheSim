@@ -40,7 +40,7 @@ namespace CacheSim {
         }
     
         static List<Address> GetAdresses() {
-            string path = Path.Combine(Directory.GetCurrentDirectory(), "Oficial.cache");
+            string path = Path.Combine(Directory.GetCurrentDirectory(), "oficial.cache");
             List<string> lstLines = File.ReadAllLines(path).Where(p => p.Trim() != string.Empty).ToList();
 
             List<Address> lst = new();
