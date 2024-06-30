@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,7 +57,7 @@ namespace CacheSim
                 TestAdress(adress);
             }
             if(configuration.WritePolicy == WritePolicy.WriteBack) {
-                this.WritesMP += this.Memory!.Count(p => p != null && p.Dirty);
+                this.WritesMP += this.Memory!.Sum(p => p.lstAddresses.Where(p => p != null).Count(z => z.Dirty));
             }
 
             this.HitRate          = (100 * Hits) / (Hits + Misses);
@@ -66,40 +67,60 @@ namespace CacheSim
         decimal HitRate { get; set; }
 
         public Result Result { get { 
-            return new Result(configuration, AverageAcessTime, HitRate, WritesMP, ReadsMP,
+            return new Result(
+                configuration, 
+                AverageAcessTime, 
+                HitRate, 
+                WritesMP, 
+                ReadsMP,
                 QuantidadeLinhas,
                 QuantidadeConjuntos,
                 LinhaSize,
                 PalavraSize,
                 RotuloSize
-                );    
+            );    
         } }
 
         public void TestAdress(Address address) {
             string Binary  = Convert.ToString(Convert.ToInt64(address.Path, 16), 2).PadLeft(TotalAddressSize, '0');
-            string TagPath = Binary.Substring(0, RotuloSize);
-            MemoryAddress? inCacheMem = this.Memory.FirstOrDefault(p => p != null && p.TagPath == TagPath);
-            bool inCache = inCacheMem != null;
+            string TagPath      = Binary.Substring(0         , RotuloSize);
+            string ConjuntoPath = Binary.Substring(RotuloSize, LinhaSize);
+            
+            MemoryAddress?  inCacheConj  = this.Memory.FirstOrDefault(p => p != null && p.ConjuntoPath == ConjuntoPath);
+            MemoryAddressTag? inCacheTag = inCacheConj != null ? inCacheConj.lstAddresses.FirstOrDefault(p => p!= null && p.TagPath == TagPath) : null;
 
             if (address.ReadWrite == ReadWrite.Read) {
-                if (inCache) {
+                if (inCacheTag != null) {
                     this.Hits++;
-                    this.Memory.ForEach(p => { if (p != null) { p.Idade++; }  });
-                    inCacheMem.Reads++;
-                    inCacheMem.Idade = 0;
+
+                    foreach (MemoryAddress memoryAddress in Memory) {
+                        foreach (MemoryAddressTag? memoryAddressTag in memoryAddress.lstAddresses) {
+                            if(memoryAddressTag != null) {
+                                memoryAddressTag.Idade++;
+                            }
+                        }
+                    }
+                    inCacheTag.Reads++;
+                    inCacheTag.Idade = 0;
                 }
                 else {
+                    foreach (MemoryAddress memoryAddress in Memory) {
+                        foreach (MemoryAddressTag? memoryAddressTag in memoryAddress.lstAddresses) {
+                            if (memoryAddressTag != null) {
+                                memoryAddressTag.Idade++;
+                            }
+                        }
+                    }
                     this.Misses++;
                     this.ReadsMP++;
-                    this.Memory.ForEach(p => { if (p != null) { p.Idade++; }  });
-                    WriteInCache(TagPath, ReadWrite.Read);
+                    WriteInCache(ConjuntoPath, TagPath, ReadWrite.Read);
                 }
             }
             // [ Write ] 
             else {
                 // [ Review Hit ] 
-                if (inCache) { 
-                    inCacheMem!.Dirty = true; 
+                if (inCacheTag != null) {
+                    inCacheTag.Dirty = true; 
                     Hits++; 
                 }
                 else {
@@ -109,21 +130,30 @@ namespace CacheSim
                     }else {
                         Misses++;
                         ReadsMP++;
-                        WriteInCache(TagPath, ReadWrite.Write, true);
+                        WriteInCache(ConjuntoPath, TagPath, ReadWrite.Write, true);
                     }
                 }
             }
         }
 
-        private void WriteInCache(string TagPath, ReadWrite ReadWrite, bool Dirty = false) {
+        private void WriteInCache(string ConjuntoPath, string TagPath, ReadWrite ReadWrite, bool Dirty = false) {
+            MemoryAddress? inCacheConj = this.Memory.FirstOrDefault(p => p != null && p.ConjuntoPath == ConjuntoPath);
+            if(inCacheConj == null) {
+                int index = this.Memory.IndexOf(this.Memory.First(p => p.ConjuntoPath == null));
+                Memory[index] = GetNewMemoryAddress(ConjuntoPath);
+                inCacheConj = Memory[index];
+            } 
+            
+            
+
             int ReplacementIndex = -1;
-            if(Memory.All(p => p != null)) {
+            if(inCacheConj.lstAddresses.All(p => p != null)) {
                 if (configuration.ReplacementPolicy == ReplacementPolicy.LFU) {
-                    ReplacementIndex = GetLFU();
+                    ReplacementIndex = GetLFU(inCacheConj);
                 }
                 else
                 if (configuration.ReplacementPolicy == ReplacementPolicy.LRU) {
-                    ReplacementIndex = GetLRU();
+                    ReplacementIndex = GetLRU(inCacheConj);
                 }
                 else
                 if (configuration.ReplacementPolicy == ReplacementPolicy.Random) {
@@ -131,46 +161,68 @@ namespace CacheSim
                 }
             }
             else {
-                ReplacementIndex = Memory.IndexOf(Memory.First(p => p == null));
+                ReplacementIndex = inCacheConj.lstAddresses.IndexOf(inCacheConj.lstAddresses.First(p => p == null));
             }
 
-            MemoryAddress CurrentMem = Memory[ReplacementIndex]!;
-            if (configuration.WritePolicy == WritePolicy.WriteBack && CurrentMem.Dirty) {
-                WritesMP++;
+            MemoryAddressTag CurrentMem = inCacheConj.lstAddresses[ReplacementIndex]!;
+            if (configuration.WritePolicy == WritePolicy.WriteBack) {
+                if (CurrentMem != null && CurrentMem.Dirty) { WritesMP++; }
             }
-            Memory[ReplacementIndex] = new MemoryAddress(TagPath, Reads: ReadWrite == ReadWrite.Read ? 1 : 0, Dirty: Dirty);
+            
+            inCacheConj.lstAddresses[ReplacementIndex] = new MemoryAddressTag(TagPath, Dirty: ReadWrite == ReadWrite.Write ? true : false, Reads: ReadWrite == ReadWrite.Read ? 1 : 0);
+            return;
         }
 
-        private int GetLRU() {
-            MemoryAddress? AddressToBeReplaced = Memory.FirstOrDefault(p => p != null && p.Idade == Memory.Where(z => z != null).Max(x => x?.Idade));
+        private int GetLRU(MemoryAddress inCacheConj) {
+            MemoryAddressTag? AddressToBeReplaced = inCacheConj.lstAddresses.FirstOrDefault(p => p != null && p.Idade == inCacheConj.lstAddresses.Where(z => z != null).Max(x => x?.Idade));
             if(AddressToBeReplaced == null) { return 0; }
-            return Memory.IndexOf(AddressToBeReplaced);
+            return inCacheConj.lstAddresses.IndexOf(AddressToBeReplaced);
         }
 
-        private int GetLFU() {
-            MemoryAddress? AddressToBeReplaced = Memory.FirstOrDefault(p => p != null && p.Reads == Memory.Where(z => z != null).Min(x => x?.Reads));
+        private int GetLFU(MemoryAddress inCacheConj) {
+            MemoryAddressTag? AddressToBeReplaced = inCacheConj.lstAddresses.FirstOrDefault(p => p != null && p.Reads == inCacheConj.lstAddresses.Where(z => z != null).Min(x => x?.Reads));
             if (AddressToBeReplaced == null) { return 0; }
-            return Memory.IndexOf(AddressToBeReplaced);
+            return inCacheConj.lstAddresses.IndexOf(AddressToBeReplaced);
         }
 
         public void SetMemory() { 
-            Memory = new List<MemoryAddress?>();
-            Memory.Capacity = QuantidadeLinhas;
-            for(int i = 0; i < QuantidadeLinhas; i++) { Memory.Add(null); }
+            Memory = new();
+            Memory.Capacity = this.QuantidadeConjuntos;
+            for(int i = 0; i < QuantidadeConjuntos; i++) {
+                MemoryAddress address = GetNewMemoryAddress(null);
+
+                Memory.Add(address);
+            }
         }
-        public List<MemoryAddress?> Memory;
+        public List<MemoryAddress> Memory;
+
+        private MemoryAddress GetNewMemoryAddress(string? ConjuntoPath) {
+            MemoryAddress address = new MemoryAddress(ConjuntoPath);
+            for (int j = 0; j < configuration.BlocosPorConjunto; j++) {
+                address.lstAddresses.Add(null);
+            }
+            return address;
+        }
     }
 
     public class MemoryAddress {
+        public string? ConjuntoPath { get; set; }
+        public List<MemoryAddressTag?> lstAddresses { get; set; } = new();
+        public MemoryAddress(string? ConjuntoPath) {
+            this.ConjuntoPath = ConjuntoPath;
+        }
+    }
+
+    public class MemoryAddressTag {
+        public int Reads { get; set; } = 0;
+        public int Idade { get; set; } = 0;
         public string TagPath { get; set; }
         public bool Dirty { get; set; }
-        public int Reads { get; set; }
-        public int Idade { get; set; } = 0;
-        public MemoryAddress(string TagPath, bool Dirty = false, int Reads = 0, int Idade = 0) {
+        public MemoryAddressTag(string TagPath, bool Dirty = false, int Reads = 0, int Idade = 0) {
             this.TagPath = TagPath;
-            this.Dirty   = Dirty;
-            this.Reads   = Reads;
-            this.Idade   = Idade;
+            this.Dirty = Dirty;
+            this.Reads = Reads;
+            this.Idade = Idade;
         }
     }
 
@@ -187,7 +239,12 @@ namespace CacheSim
         public int PalavraSize { get; set; }
         public int RotuloSize { get; set; }
 
-        public Result(Configuration configuration, int AverageAcessTime, decimal HitRate, int WritesMP, int ReadsMP,
+        public Result(
+            Configuration configuration, 
+            int AverageAcessTime, 
+            decimal HitRate, 
+            int WritesMP, 
+            int ReadsMP,
             int QuantidadeLinhas,
             int QuantidadeConjuntos,
             int LinhaSize,
