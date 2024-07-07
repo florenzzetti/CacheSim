@@ -45,7 +45,7 @@ namespace CacheSim
                 new (2048, 4),
             };
             foreach (var item in lstTesteTamanhoBloco) {
-                Impacto_Tamanho_Bloco.TamanhoBloco    = item.Item1;
+                Impacto_Tamanho_Bloco.TamanhoBloco = item.Item1;
                 Impacto_Tamanho_Bloco.QuantidadeBloco = item.Item2;
                 Result result = new MemoryTest(Impacto_Tamanho_Bloco, lstAddresses).Result;
                 result.Log();
@@ -73,8 +73,11 @@ namespace CacheSim
             //Impacto Politica Substituicao
             foreach (ReplacementPolicy Test in new ReplacementPolicy[] { ReplacementPolicy.LRU, ReplacementPolicy.LFU, ReplacementPolicy.Random }) {
                 Impacto_Politica_Substituicao.ReplacementPolicy = Test;
-                Result result = new MemoryTest(Impacto_Politica_Substituicao, lstAddresses).Result;
-                result.Log();
+                foreach (int QuantidadeBlocos in new int[] { 16, 32, 64, 128, 256 }) {
+                    Impacto_Politica_Substituicao.QuantidadeBloco = QuantidadeBlocos;
+                    Result result = new MemoryTest(Impacto_Politica_Substituicao, lstAddresses).Result;
+                    result.Log();
+                }
             }
 
             Console.BackgroundColor = ConsoleColor.Magenta;
@@ -88,13 +91,16 @@ namespace CacheSim
 
             foreach (WritePolicy WritePolicy in new WritePolicy[] { WritePolicy.WriteBack, WritePolicy.WriteTrough }) {
                 Impacto_Banda_Memoria.WritePolicy = WritePolicy;
-                foreach (var TamCache in new Tuple<int, int>[] { new(128,64), new(64,128) }) {
-                    Impacto_Banda_Memoria.TamanhoBloco = TamCache.Item1;   
-                    Impacto_Banda_Memoria.QuantidadeBloco = TamCache.Item2;   
                     foreach (int Associatividade in new int[] { 2, 4 }) {
-                        Impacto_Banda_Memoria.BlocosPorConjunto = Associatividade;
-                        Result result = new MemoryTest(Impacto_Banda_Memoria, lstAddresses).Result;
-                        result.Log();
+                    Impacto_Banda_Memoria.BlocosPorConjunto = Associatividade;
+                    foreach (int TamBloco in new int[] { 64, 128 }) {
+                        foreach (int QtdBloco in new int[] { 64, 128 }) {
+                            if(QtdBloco == 64 && TamBloco == 64) { continue; }
+                            Impacto_Banda_Memoria.TamanhoBloco    = TamBloco;   
+                            Impacto_Banda_Memoria.QuantidadeBloco = QtdBloco;   
+                            Result result = new MemoryTest(Impacto_Banda_Memoria, lstAddresses).Result;
+                            result.Log();
+                        }
                     }
                 }
             }
