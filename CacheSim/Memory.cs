@@ -157,7 +157,7 @@ namespace CacheSim
                 }
                 else
                 if (configuration.ReplacementPolicy == ReplacementPolicy.Random) {
-                    ReplacementIndex = new Random().Next(0, Memory.Capacity - 1);
+                    ReplacementIndex = new Random().Next(0, inCacheConj.lstAddresses.Capacity - 1);
                 }
             }
             else {
