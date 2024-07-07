@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace CacheSim
 {
@@ -91,17 +92,28 @@ namespace CacheSim
 
             foreach (WritePolicy WritePolicy in new WritePolicy[] { WritePolicy.WriteBack, WritePolicy.WriteTrough }) {
                 Impacto_Banda_Memoria.WritePolicy = WritePolicy;
-                    foreach (int Associatividade in new int[] { 2, 4 }) {
+                foreach (int Associatividade in new int[] { 2, 4 }) {
                     Impacto_Banda_Memoria.BlocosPorConjunto = Associatividade;
-                    foreach (int TamBloco in new int[] { 64, 128 }) {
-                        foreach (int QtdBloco in new int[] { 64, 128 }) {
-                            if(QtdBloco == 64 && TamBloco == 64) { continue; }
-                            Impacto_Banda_Memoria.TamanhoBloco    = TamBloco;   
-                            Impacto_Banda_Memoria.QuantidadeBloco = QtdBloco;   
-                            Result result = new MemoryTest(Impacto_Banda_Memoria, lstAddresses).Result;
-                            result.Log();
-                        }
-                    }
+
+                    Impacto_Banda_Memoria.TamanhoBloco    = 64;   
+                    Impacto_Banda_Memoria.QuantidadeBloco = 128;   
+                    Result result = new MemoryTest(Impacto_Banda_Memoria, lstAddresses).Result;
+                    result.Log();
+
+                    Impacto_Banda_Memoria.TamanhoBloco    = 128;
+                    Impacto_Banda_Memoria.QuantidadeBloco = 64;
+                    result = new MemoryTest(Impacto_Banda_Memoria, lstAddresses).Result;
+                    result.Log();
+
+                    Impacto_Banda_Memoria.TamanhoBloco    = 64;
+                    Impacto_Banda_Memoria.QuantidadeBloco = 256;
+                    result = new MemoryTest(Impacto_Banda_Memoria, lstAddresses).Result;
+                    result.Log();
+
+                    Impacto_Banda_Memoria.TamanhoBloco    = 128;
+                    Impacto_Banda_Memoria.QuantidadeBloco = 128;
+                    result = new MemoryTest(Impacto_Banda_Memoria, lstAddresses).Result;
+                    result.Log();
                 }
             }
         }
